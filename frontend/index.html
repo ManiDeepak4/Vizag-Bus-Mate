@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vizag Bus Finder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="icon-192.png" />
+</head>
+<body>
+  <header>
+    <h1>🚍 Vizag Bus-Mate</h1>
+  </header>
+
+  <main>
+    <div class="search-box sticky">
+      <h2>Search by Bus Number</h2>
+      <input type="text" id="busNumberInput" placeholder="Enter Bus Number" autocomplete="off">
+      <button onclick="searchByNumber()">Search</button>
+    </div>
+
+    <div class="search-box sticky">
+      <h2>Search by Route</h2>
+      <div class="route-inputs">
+        <label for="fromInput">From</label>
+        <div class="input-wrapper">
+          <input type="text" id="fromInput" placeholder="From" autocomplete="off">
+          <div id="fromSuggestions" class="suggestions"></div>
+        </div>
+
+        <button id="swapBtn" onclick="swapInputs()">⇄ Swap</button>
+
+        <label for="toInput">To</label>
+        <div class="input-wrapper">
+          <input type="text" id="toInput" placeholder="To" autocomplete="off">
+          <div id="toSuggestions" class="suggestions"></div>
+        </div>
+      </div>
+
+      <button onclick="searchByRoute()">Search</button>
+    </div>
+
+    <div id="loading" style="display: none; text-align: center;">
+      <p>Loading...</p>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="coming-soon-banner">
+      🚧 Coming Soon: Live Tracking & Bus Timings 🚧
+    </div>
+  </main>
+
+  <footer>
+    <div class="feedback-section">
+      <h2>💬 Share Your Feedback</h2>
+      <p>We’d love to hear your thoughts about Vizag Bus-Mate!</p>
+      <a href="https://forms.gle/abEQbWhe5iR9N5nz9" target="_blank">
+        <button class="feedback-btn">Submit Feedback</button>
+      </a>
+
+      <div class="social-links">
+        <p>Connect with me:</p>
+        <a href="https://www.instagram.com/_deepak_goud_" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/40/1d3557/instagram-new.png" alt="Instagram" />
+        </a>
+        <a href="https://www.linkedin.com/in/manideepak-kondra-02a007301" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/40/1d3557/linkedin.png" alt="LinkedIn" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
