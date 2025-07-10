@@ -35,7 +35,7 @@ async function searchByNumber() {
   resultDiv.innerHTML = "";
 
   try {
-    const res = await fetch(`API_BASE_URL/api/bus/${number}`);
+    const res = await fetch(`${API_BASE_URL}/api/bus/${number}`);
     if (!res.ok) throw new Error("Bus not found");
     const bus = await res.json();
 
@@ -70,7 +70,7 @@ async function searchByRoute() {
   resultDiv.innerHTML = "";
 
   try {
-    const response = await fetch(`API_BASE_URL/api/bus?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
+    const response = await fetch(`${API_BASE_URL}/api/bus?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
     const buses = await response.json();
 
     // Handle response
