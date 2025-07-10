@@ -26,7 +26,6 @@ const allStops = [
 
 
 // Search by Bus Number
-// Search by Bus Number
 async function searchByNumber() {
   const number = document.getElementById("busNumberInput").value.trim();
   if (!number) return;
@@ -88,7 +87,7 @@ async function searchByRoute() {
 
       const container = document.createElement("div");
       container.className = "route-container";
-      container.id = `route-${bus.busnumber}`;
+      container.id = `route-${bus.number}`;  // ✅ FIXED: Changed from bus.busnumber to bus.number
 
       resultDiv.appendChild(btn);
       resultDiv.appendChild(container);
