@@ -50,7 +50,7 @@ router.get("/", async (req, res) => {
       if (fromIndex !== -1 && toIndex !== -1) {
         const isForward = fromIndex < toIndex;
         return {
-          number: bus.number,  // ✅ CRITICAL: This must be included
+          number: bus.busNumber,  // ✅ CRITICAL: This must be included
           route: isForward ? bus.route : [...bus.route].reverse(),
         };
       }
