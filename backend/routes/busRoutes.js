@@ -12,7 +12,7 @@ router.get('/:number', async (req, res) => {
 
   try {
     const bus = await Bus.findOne({
-      busNumber: { $regex: `^${busNumber}$`, $options: 'i' },
+      number: { $regex: `^${busNumber}$`, $options: 'i' },
     });
 
     if (!bus) {
