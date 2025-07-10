@@ -1,36 +1,26 @@
 const mongoose = require("mongoose");
-
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
+require("dotenv").config(); // ✅ Enable .env support
 
 const busRoutes = require("./routes/busRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Enable CORS if needed
+// ✅ CORS setup for Netlify frontend
 app.use(cors({
-  origin: ['https://vizag-bus-mate.netlify.app', 'http://localhost:5000', 'http://localhost:3000'],
-  credentials: true
+  origin: ['https://vizag-bus-mate.netlify.app'], // Replace with your actual Netlify URL if different
 }));
 
-// Middleware to parse JSON
+// ✅ Middleware to parse JSON
 app.use(express.json());
 
-// ✅ Serve static files from frontend folder
-app.use(express.static(path.join(__dirname, "../frontend")));
-
-// ✅ Your API routes
+// ✅ API routes
 app.use("/api/bus", busRoutes);
 
-// ✅ Send index.html for any unknown route (like /about, /contact)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
-});
-const MONGO_URI = "mongodb+srv://kondramanideepak:MySecurePWD123@cluster0.lh0idrc.mongodb.net/vizagbus?retryWrites=true&w=majority&appName=Cluster0";
-
-mongoose.connect(MONGO_URI, {
+// ✅ MongoDB Connection using Environment Variable
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -39,5 +29,5 @@ mongoose.connect(MONGO_URI, {
 
 // ✅ Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
