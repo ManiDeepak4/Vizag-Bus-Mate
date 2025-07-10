@@ -83,7 +83,7 @@ async function searchByRoute() {
     buses.forEach(bus => {
       const btn = document.createElement("button");
       btn.className = "bus-link";
-      btn.innerHTML = `Bus ${bus.busnumber} <span class="arrow">▼</span>`;
+      btn.innerHTML = `Bus ${bus.number} <span class="arrow">▼</span>`;
       btn.onclick = () => toggleRoute(bus, btn);
 
       const container = document.createElement("div");
@@ -104,7 +104,7 @@ async function searchByRoute() {
 
 // Toggle Show/Hide Route
 function toggleRoute(bus, button) {
-  const container = document.getElementById(`route-${bus.busnumber}`);
+  const container = document.getElementById(`route-${bus.number}`);
   const arrow = button.querySelector(".arrow");
 
   // Close all others
