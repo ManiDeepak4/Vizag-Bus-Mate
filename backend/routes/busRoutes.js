@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Bus = require('../models/Bus');
+const Bus = require('../models/bus');
 
 // ✅ Get bus by number (case-insensitive)
 router.get('/:number', async (req, res) => {
