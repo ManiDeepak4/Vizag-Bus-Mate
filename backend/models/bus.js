@@ -7,7 +7,7 @@ const busSchema = new mongoose.Schema({
     unique: true
   },
   route: {
-    type: String,
+    type: [String],
     required: true
   },
   source: {
