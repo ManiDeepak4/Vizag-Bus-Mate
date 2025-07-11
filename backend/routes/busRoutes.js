@@ -43,19 +43,19 @@ router.get("/", async (req, res) => {
     });
 
     const filtered = buses.map((bus) => {
-      const routeLower = bus.route.map((stop) => stop.toLowerCase());
-      const fromIndex = routeLower.indexOf(fromLower);
-      const toIndex = routeLower.indexOf(toLower);
+  const routeLower = bus.route.map((stop) => stop.toLowerCase());
+  const fromIndex = routeLower.indexOf(fromLower);
+  const toIndex = routeLower.indexOf(toLower);
 
-      if (fromIndex !== -1 && toIndex !== -1) {
-        const isForward = fromIndex < toIndex;
-        return {
-          number: bus.number || bus.busNumber || bus._id,  // ✅ Most important line
-          route: isForward ? bus.route : [...bus.route].reverse(),
-        };
-      }
-      return null;
-    }).filter(Boolean);
+  if (fromIndex !== -1 && toIndex !== -1) {
+    const isForward = fromIndex < toIndex;
+    return {
+      number: (bus.number && bus.number.toString()) || (bus.busNumber && bus.busNumber.toString()) || bus._id.toString(),
+      route: isForward ? bus.route : [...bus.route].reverse(),
+    };
+  }
+  return null;
+}).filter(Boolean);
 
     res.json(filtered);
   } catch (error) {
