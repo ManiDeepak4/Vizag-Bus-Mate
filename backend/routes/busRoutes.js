@@ -8,16 +8,13 @@ router.get('/:number', async (req, res) => {
   if (!busNumber || !/^[A-Za-z0-9]+$/.test(busNumber)) {
     return res.status(400).json({ message: 'Invalid bus number format' });
   }
-
   try {
     const bus = await Bus.findOne({
       number: { $regex: `^${busNumber}$`, $options: 'i' },
     });
-
     if (!bus) {
       return res.status(404).json({ message: 'Bus not found' });
     }
-
     res.json(bus);
   } catch (error) {
     console.error("❌ Error in /api/bus/:number:", error);
@@ -25,7 +22,7 @@ router.get('/:number', async (req, res) => {
   }
 });
 
-// ✅ Get buses by from and to (with full route and correct direction)
+// ✅ Get buses by from and to (direction-aware)
 router.get("/", async (req, res) => {
   try {
     const { from, to } = req.query;
@@ -52,15 +49,13 @@ router.get("/", async (req, res) => {
 
       if (fromIndex !== -1 && toIndex !== -1) {
         const isForward = fromIndex < toIndex;
-        const fullRoute = isForward ? bus.route : [...bus.route].reverse();
-
         return {
-          number: bus.number,   // ✅ Required for frontend
-          route: fullRoute,
+          number: bus.number || bus.busNumber || bus._id,  // ✅ Most important line
+          route: isForward ? bus.route : [...bus.route].reverse(),
         };
       }
       return null;
-    }).filter(Boolean); // Remove any null values
+    }).filter(Boolean);
 
     res.json(filtered);
   } catch (error) {
