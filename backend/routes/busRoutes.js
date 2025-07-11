@@ -50,7 +50,7 @@ router.get("/", async (req, res) => {
   if (fromIndex !== -1 && toIndex !== -1) {
     const isForward = fromIndex < toIndex;
     return {
-      number: (bus.number && bus.number.toString()) || (bus.busNumber && bus.busNumber.toString()) || bus._id.toString(),
+      number: bus.number,
       route: isForward ? bus.route : [...bus.route].reverse(),
     };
   }
