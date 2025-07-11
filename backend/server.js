@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ CORS setup for Netlify frontend
 app.use(cors({
-  origin: ['https://vizag-bus-mate.netlify.app',
+  origin: ['https://vizagbusmate.netlify.app',
     'https://fabulous-zuccutto-becf80.netlify.app', // Your current Netlify URL
     'http://localhost:3000', // For local development
     'https://*.netlify.app' // Allow all netlify subdomains
