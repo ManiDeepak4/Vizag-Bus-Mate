@@ -238,25 +238,7 @@ function setupAutocomplete(inputId, suggestionsId) {
     });
   }
 }
-// ✅ Show "Add to Home Screen" banner only on mobile and if not already installed
-window.addEventListener("load", () => {
-  const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  if (!isStandalone && isMobile) {
-    const banner = document.getElementById("bannerx");
-    if (banner) {
-      banner.style.display = "flex";
-    }
-
-    const closeBtn = document.getElementById("close-bannerx");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        banner.style.display = "none";
-      });
-    }
-  }
-});
 
 
 // Initialize autocomplete
