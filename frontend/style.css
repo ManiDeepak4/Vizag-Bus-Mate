@@ -11,16 +11,33 @@ h1, h2, h3 {
 }
 
 
-header {
-  background-color: #1d3557;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.app-header {
+  background-color: #1f3556; /* same blue as your UI */
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo {
+  height: 42px;
+  width: auto;
+}
+
+.app-header h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
 
 main {
   padding: 20px;
@@ -355,3 +372,4 @@ footer {
 .highlight-circle {
   background-color: #e74c3c;
 }
+
