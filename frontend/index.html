@@ -95,6 +95,49 @@
     </div>
   </footer>
 
+  <!-- Floating AI Chatbot -->
+  <div id="aiChatbotContainer" class="chatbot-container closed">
+    <!-- Chat Trigger Button -->
+    <button id="chatbotTrigger" class="chatbot-trigger" onclick="toggleChatbot()">
+      <span class="chat-icon">💬</span>
+      <span class="chat-text">AI Assistant</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chatbotWindow" class="chatbot-window">
+      <!-- Header -->
+      <div class="chatbot-header">
+        <div class="chatbot-header-info">
+          <span class="bot-avatar">🚌</span>
+          <div>
+            <h3>Vizag Bus-Mate AI</h3>
+            <span class="online-indicator">Online</span>
+          </div>
+        </div>
+        <button class="chatbot-close-btn" onclick="toggleChatbot()">×</button>
+      </div>
+
+      <!-- Messages Area -->
+      <div id="chatbotMessages" class="chatbot-messages">
+        <!-- Initial system/welcome message -->
+        <div class="chat-message bot">
+          <p>Hi there! 🚌 I am your Vizag Bus-Mate AI Assistant. Ask me how to travel between two stops or search for routes and timings. How can I help you today?</p>
+        </div>
+        <!-- Suggestion chips -->
+        <div class="suggestion-chips-container">
+          <button class="suggestion-chip" onclick="sendSuggestion('How to go from MVP Colony to RTC Complex?')">From MVP to RTC Complex</button>
+          <button class="suggestion-chip" onclick="sendSuggestion('Which buses go to Gitam?')">Buses to Gitam</button>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbotInput" placeholder="Ask AI..." autocomplete="off" onkeydown="handleChatbotKeydown(event)">
+        <button id="chatbotSendBtn" onclick="sendChatMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

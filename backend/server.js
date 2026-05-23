@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config(); // ✅ Enable .env support
 
 const busRoutes = require("./routes/busRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.use(express.json());
 
 // ✅ API routes
 app.use("/api/bus", busRoutes);
+app.use("/api/chat", chatRoutes);
 
 // ✅ MongoDB Connection using Environment Variable
 mongoose.connect(process.env.MONGO_URI, {
