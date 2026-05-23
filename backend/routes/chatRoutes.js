@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       
       // Retrieve all bus info from DB to provide context to Gemini
-      const buses = await Bus.find({ isActive: true });
+      const buses = await Bus.find({ isActive: { $ne: false } });
       const contextPrompt = `
 You are the "Vizag Bus-Mate AI Assistant", a friendly transit companion for Visakhapatnam (Vizag) public transport.
 Here is the active bus database in Vizag:
