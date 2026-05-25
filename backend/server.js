@@ -45,7 +45,9 @@ app.use("/api/bus", busRoutes);
 app.use("/api/chat", chatRoutes);
 
 // ✅ MongoDB Connection using Environment Variable
-mongoose.connect(process.env.MONGO_URI, {
+const dbURI = process.env.MONGODB_URI || process.env.MONGO_URI;
+
+mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
